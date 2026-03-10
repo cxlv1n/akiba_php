@@ -1,0 +1,140 @@
+
+<section class="about-page">
+    <div class="container">
+        <!-- Основная информация о компании -->
+        <div class="about-page__content">
+            <div class="about-page__left">
+                <div class="about-page__header">
+                    <p class="eyebrow">О компании</p>
+                    <h1 class="about-page__title">О нашей компании</h1>
+                </div>
+
+                <div class="about-page__main">
+                    <p class="about-page__text">
+                        Наша компания специализируется на покупке автомобилей с аукционов Японии, а также с внутренних рынков Южной Кореи и Китая. За более чем 5 лет успешной работы мы зарекомендовали себя как надежный партнер для тех, кто ищет качественный сервис и автомобили по выгодным ценам.
+                    </p>
+
+                    <p class="about-page__text">
+                        Мы предлагаем полный спектр услуг: от подбора автомобиля под ваши требования до его доставки и оформления всех необходимых документов. Наша команда профессионалов обеспечивает прозрачность всех этапов сделки и индивидуальный подход к каждому клиенту.
+                    </p>
+                </div>
+            </div>
+
+            <div class="about-page__right">
+                <div class="about-page__certificate-large">
+                    <img src="<?= e(asset('images/sertificat.png')) ?>" alt="Сертификат Akiba Auto" class="about-page__certificate-img-large">
+                </div>
+            </div>
+        </div>
+
+        <!-- Статистика компании -->
+        <div class="about-page__stats">
+            <div class="about-page__stats-grid">
+                <div class="about-page__stat">
+                    <div class="about-page__stat-number" data-count="5" data-suffix="+">5+</div>
+                    <div class="about-page__stat-label">лет опыта</div>
+                </div>
+                <div class="about-page__stat">
+                    <div class="about-page__stat-number" data-count="1000" data-suffix="+">1000+</div>
+                    <div class="about-page__stat-label">довольных клиентов</div>
+                </div>
+                <div class="about-page__stat">
+                    <div class="about-page__stat-number" data-count="50" data-suffix="+">50+</div>
+                    <div class="about-page__stat-label">авто в месяц</div>
+                </div>
+                <div class="about-page__stat">
+                    <div class="about-page__stat-number" data-count="3">3</div>
+                    <div class="about-page__stat-label">страны поставок</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Преимущества компании -->
+        <div class="about-page__benefits">
+            <h2 class="about-page__subtitle">Почему выбирают нас</h2>
+            <div class="about-page__benefits-grid">
+                <div class="benefit-card benefit-card--secondary">
+                    <div class="benefit-card__icon">
+                        <svg class="benefit-card__icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 9L12 15.5L5 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M19 5H5C3.89543 5 3 5.89543 3 7V17C3 18.1046 3.89543 19 5 19H19C20.1046 19 21 18.1046 21 17V7C21 5.89543 20.1046 5 19 5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="benefit-card__content">
+                        <h3 class="benefit-card__title">Опыт и профессионализм</h3>
+                        <p class="benefit-card__text">Мы работаем уже более 5 лет, что позволяет нам точно и быстро находить лучшие предложения на международных рынках.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card benefit-card--secondary">
+                    <div class="benefit-card__icon">
+                        <svg class="benefit-card__icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17 20H7C5.89543 20 5 19.1046 5 18V9C5 7.89543 5.89543 7 7 7H17C18.1046 7 19 7.89543 19 9V18C19 19.1046 18.1046 20 17 20Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 3V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8 3V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 3V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="benefit-card__content">
+                        <h3 class="benefit-card__title">Высокий уровень обслуживания</h3>
+                        <p class="benefit-card__text">Мы ценим каждого клиента и стремимся обеспечить индивидуальный подход, прозрачность и полное понимание ваших потребностей.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card benefit-card--secondary">
+                    <div class="benefit-card__icon">
+                        <svg class="benefit-card__icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="benefit-card__content">
+                        <h3 class="benefit-card__title">Качество и надежность</h3>
+                        <p class="benefit-card__text">Мы гарантируем честность и ответственность на каждом этапе сделки, а также предоставляем полный спектр услуг по оформлению и доставке автомобилей.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card benefit-card--secondary">
+                    <div class="benefit-card__icon">
+                        <svg class="benefit-card__icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="benefit-card__content">
+                        <h3 class="benefit-card__title">Защита бренда</h3>
+                        <p class="benefit-card__text">У нас зарегистрированный товарный знак, что подтверждает нашу уникальность и надежность на рынке.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card benefit-card--secondary">
+                    <div class="benefit-card__icon">
+                        <svg class="benefit-card__icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="2"/>
+                            <path d="M16 16L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="benefit-card__content">
+                        <h3 class="benefit-card__title">Прозрачность</h3>
+                        <p class="benefit-card__text">Мы ориентированы на долгосрочное сотрудничество и стремимся сделать процесс покупки автомобиля максимально простым и безопасным.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card benefit-card--secondary">
+                    <div class="benefit-card__icon">
+                        <svg class="benefit-card__icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14 2V8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 13H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 17H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M10 9H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="benefit-card__content">
+                        <h3 class="benefit-card__title">Полное сопровождение</h3>
+                        <p class="benefit-card__text">От подбора автомобиля до его регистрации в России - мы берем на себя все этапы и делаем процесс максимально комфортным.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,13 @@
+.DS_Store
+*/.DS_Store
+
+storage/mail.log
+storage/requests.jsonl
+storage/sessions/*
+!storage/sessions/.gitkeep
+
+data/*.sqlite3-journal
+data/*.sqlite3-shm
+data/*.sqlite3-wal
+
+media/cars/gallery/.DS_Store

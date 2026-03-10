@@ -1,0 +1,271 @@
+<?php
+$popularCars = array_slice($cars ?? [], 0, 4);
+$reviewsList = $reviews ?? [];
+?>
+<section class="hero" aria-labelledby="hero-title">
+    <picture>
+        <source media="(max-width: 768px)" srcset="<?= e(asset('images/Hero_bakc_phone.png')) ?>" type="image/png">
+        <source srcset="<?= e(asset('images/Hero_bakc3.webp')) ?>" type="image/webp">
+        <img src="<?= e(asset('images/Hero_bakc3.jpg')) ?>" alt="" class="hero__bg hero__bg--default" aria-hidden="true">
+    </picture>
+    <picture>
+        <source media="(max-width: 768px)" srcset="<?= e(asset('images/Hero_bakc_phone.png')) ?>" type="image/png">
+        <source srcset="<?= e(asset('images/Hero_bakc3.webp')) ?>" type="image/webp">
+        <img src="<?= e(asset('images/Hero_bakc3.jpg')) ?>" alt="" class="hero__bg hero__bg--ultrawide" aria-hidden="true">
+    </picture>
+    <div class="container hero__content">
+        <div class="hero__left">
+            <h1 class="hero__title" id="hero-title">
+                Автомобили из Японии, Южной Кореи и Китая<br class="hero__mobile-break"> за 21 день
+            </h1>
+            <p class="hero__subtitle">
+                Бесплатный просчёт, доставка и растаможка<br>
+                под ключ в любой город России.
+            </p>
+
+            <div class="hero__actions">
+                <button type="button" class="btn btn--hero" data-open-modal="request">Подобрать автомобиль</button>
+                <a href="<?= e(route_url('process')) ?>" class="btn btn--ghost">Как мы работаем</a>
+            </div>
+
+            <ul class="hero__benefits">
+                <li class="hero__benefit hero__benefit--calc">
+                    <div class="hero__benefit-icon">
+                        <svg class="hero__benefit-icon-svg" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 1V23M17 5H9.5C8.57174 5 7.6815 5.36875 7.02513 6.02513C6.36875 6.6815 6 7.57174 6 8.5C6 9.42826 6.36875 10.3185 7.02513 10.9749C7.6815 11.6313 8.57174 12 9.5 12H14.5C15.4283 12 16.3185 12.3687 16.9749 13.0251C17.6313 13.6815 18 14.5717 18 15.5C18 16.4283 17.6313 17.3185 16.9749 17.9749C16.3185 18.6313 15.4283 19 14.5 19H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="hero__benefit-value">Бесплатный просчёт</div>
+                    <p class="hero__benefit-text">автомобиля по вашим параметрам</p>
+                </li>
+                <li class="hero__benefit hero__benefit--delivery">
+                    <div class="hero__benefit-icon">
+                        <svg class="hero__benefit-icon-svg" viewBox="0 0 24 24" fill="none">
+                            <path d="M3 7V17C3 18.1046 3.89543 19 5 19H19C20.1046 19 21 18.1046 21 17V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <polyline points="10,9 14,9 14,11 10,11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="hero__benefit-value">Поставка под ключ</div>
+                    <p class="hero__benefit-text">с логистикой и таможней</p>
+                </li>
+                <li class="hero__benefit hero__benefit--profit">
+                    <div class="hero__benefit-icon">
+                        <svg class="hero__benefit-icon-svg" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="hero__benefit-value">до 30%</div>
+                    <p class="hero__benefit-text">Экономии на покупке автомобиля</p>
+                </li>
+            </ul>
+        </div>
+</section>
+
+<section class="popular" id="popular">
+    <div class="container">
+        <h2 class="popular__title">Популярные модели</h2>
+        <div class="popular__box">
+            <div class="popular__filters">
+                <div class="popular__filters-left">
+                    <button class="filter-pill" type="button"><span class="filter-pill__label">Марка</span><span class="filter-pill__arrow"></span></button>
+                    <button class="filter-pill" type="button"><span class="filter-pill__label">Модель</span><span class="filter-pill__arrow"></span></button>
+                    <div class="filter-pill filter-pill--range">
+                        <div class="filter-pill__range-item"><span class="filter-pill__label">Год от</span><span class="filter-pill__arrow"></span></div>
+                        <span class="filter-pill__divider"></span>
+                        <div class="filter-pill__range-item"><span class="filter-pill__label">До</span><span class="filter-pill__arrow"></span></div>
+                    </div>
+                </div>
+                <a class="btn btn--calc popular__show-btn" href="<?= e(route_url('catalog_list')) ?>">Показать</a>
+            </div>
+            <div class="popular__cards">
+                <?php if ($popularCars !== []): ?>
+                    <?php foreach ($popularCars as $index => $car): ?>
+                        <article class="car-card">
+                            <div class="car-card__img-wrap">
+                                <img src="<?= e($car['image_url'] ?? asset('images/placeholder-car.jpg')) ?>" alt="<?= e((string) ($car['name'] ?? 'Автомобиль')) ?>" class="car-card__img">
+                            </div>
+                            <div class="car-card__body">
+                                <p class="car-card__pub">Номер публикации #<?= e((string) (1001 + $index)) ?></p>
+                                <h3 class="car-card__title"><?= e((string) $car['manufacturer']) ?> <?= e((string) $car['model']) ?></h3>
+
+                                <div class="car-card__row">
+                                    <div class="car-card__col">
+                                        <span class="car-card__label">Кузов</span>
+                                        <span class="car-card__value"><?= e(value_or_dash((string) ($car['body_type'] ?? ''))) ?></span>
+                                    </div>
+                                    <div class="car-card__col">
+                                        <span class="car-card__label">Год выпуска</span>
+                                        <span class="car-card__value"><?= e((string) $car['year']) ?></span>
+                                    </div>
+                                </div>
+
+                                <div class="car-card__row">
+                                    <div class="car-card__col">
+                                        <span class="car-card__label">Пробег</span>
+                                        <span class="car-card__value"><?= e(format_intcomma((int) $car['mileage_km'])) ?> км</span>
+                                    </div>
+                                    <div class="car-card__col">
+                                        <span class="car-card__label">Объем двигателя</span>
+                                        <span class="car-card__value"><?= e(value_or_dash((string) ($car['engine_volume'] ?? ''))) ?></span>
+                                    </div>
+                                </div>
+
+                                <div class="car-card__divider"></div>
+
+                                <div class="car-card__price-row">
+                                    <div>
+                                        <span class="car-card__label">Стоимость:</span>
+                                        <p class="car-card__price"><?= e(format_price((float) $car['price'])) ?></p>
+                                    </div>
+
+                                    <a class="btn car-card__btn" href="<?= e(route_url('catalog_detail', ['id' => (int) $car['id']])) ?>">Подробнее</a>
+                                </div>
+                            </div>
+                        </article>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p class="muted">Пока нет доступных позиций.</p>
+                <?php endif; ?>
+            </div>
+            <a href="<?= e(route_url('catalog_list')) ?>" class="popular__catalog-btn">Перейти в каталог</a>
+        </div>
+    </div>
+</section>
+
+<section class="benefits" id="benefits">
+    <div class="container">
+        <div class="benefits__header">
+            <h2 class="benefits__title">Преимущества покупки автомобиля через компанию Akiba Auto</h2>
+        </div>
+
+        <div class="benefits__grid">
+            <article class="benefit-card benefit-card--primary"><div class="benefit-card__icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M12 1V23M17 5H9.5C8.57174 5 7.6815 5.36875 7.02513 6.02513C6.36875 6.6815 6 7.57174 6 8.5C6 9.42826 6.36875 10.3185 7.02513 10.9749C7.6815 11.6313 8.57174 12 9.5 12H14.5C15.4283 12 16.3185 12.3687 16.9749 13.0251C17.6313 13.6815 18 14.5717 18 15.5C18 16.4283 17.6313 17.3185 16.9749 17.9749C16.3185 18.6313 15.4283 19 14.5 19H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="benefit-card__value" data-count="30" data-prefix="до " data-suffix="%">до 30%</div><p class="benefit-card__text">Экономии при покупке автомобиля</p></article>
+            <article class="benefit-card benefit-card--secondary"><div class="benefit-card__icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="benefit-card__value" data-count="21" data-suffix=" день">21 день</div><p class="benefit-card__text">Среднее время доставки автомобиля</p></article>
+            <article class="benefit-card benefit-card--secondary"><div class="benefit-card__icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2"/></svg></div><div class="benefit-card__value" data-count="100" data-suffix="%">100%</div><p class="benefit-card__text">Сопровождение сделки от начала до конца</p></article>
+            <article class="benefit-card benefit-card--secondary"><div class="benefit-card__icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="benefit-card__value">24/7</div><p class="benefit-card__text">Поддержка и консультации в любое время</p></article>
+            <article class="benefit-card benefit-card--primary"><div class="benefit-card__icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 2V4M12 20V22M4 12H2M22 12H20M6.34 6.34L4.93 4.93M19.07 19.07L17.66 17.66M6.34 17.66L4.93 19.07M19.07 4.93L17.66 6.34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><div class="benefit-card__value" data-count="4" data-suffix="+ года">4+ года</div><p class="benefit-card__text">Надежного опыта на автомобильном рынке</p></article>
+            <article class="benefit-card benefit-card--primary"><div class="benefit-card__icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.27M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11594 19.0078 7.00231C19.0078 7.88869 18.7122 8.75071 18.1676 9.45232C17.623 10.1539 16.8604 10.6543 16 10.8743M13 7C13 9.20914 11.2091 11 9 11C6.79086 11 5 9.20914 5 7C5 4.79086 6.79086 3 9 3C11.2091 3 13 4.79086 13 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="benefit-card__value" data-count="3000" data-suffix="+">3 000+</div><p class="benefit-card__text">Довольных клиентов по всему СНГ</p></article>
+        </div>
+    </div>
+</section>
+
+<section class="about" id="about">
+    <div class="container about__inner">
+        <div class="about__content">
+            <p class="eyebrow">О компании</p>
+            <h2 class="about__title">О нашей компании</h2>
+            <p class="about__text">Покупаем автомобили с аукционов Японии и внутренних рынков Южной Кореи и Китая. Более 5 лет работаем как надежный партнер: выгодные условия, прозрачность и полный сервис под ключ.</p>
+            <ul class="about__list">
+                <li>5+ лет опыта — быстро находим лучшие предложения на международных рынках</li>
+                <li>Индивидуальный сервис: прозрачность сделок и понимание запросов</li>
+                <li>Качество и ответственность: оформление и доставка под ключ</li>
+                <li>Ценности: долгосрочное сотрудничество, поддержка и безопасность клиента</li>
+                <li>Защита бренда: зарегистрированный товарный знак и честные процессы</li>
+            </ul>
+            <div class="about__actions">
+                <a class="btn btn--calc" href="<?= e(route_url('about')) ?>">Подробнее о компании</a>
+            </div>
+        </div>
+
+        <div class="about__certificate" aria-hidden="true">
+            <div class="about__card">
+                <img src="<?= e(asset('images/sertificat.png')) ?>" alt="Сертификат Akiba Auto" class="about__img">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="social" id="social">
+    <div class="container social__inner">
+        <div class="social__content">
+            <p class="eyebrow">Социальные сети</p>
+            <h2 class="social__title">Больше информации и обзоров в наших соцсетях</h2>
+            <p class="social__text">Следите за нами в Telegram и YouTube, чтобы не пропустить свежие видео, подборки авто и реальные кейсы клиентов.</p>
+            <div class="social__stats">
+                <span class="social__chip">20K+ просмотров в месяц</span>
+                <span class="social__chip">Еженедельные обзоры</span>
+                <span class="social__chip">Разборы поставок</span>
+            </div>
+            <div class="social__actions">
+                <a class="btn btn--telegram social__btn" href="https://t.me/akibaautovl" target="_blank" rel="noopener"><span class="social__icon social__icon--tg" aria-hidden="true"></span><span class="social__label">Telegram</span></a>
+                <a class="btn btn--ghost social__btn" href="https://www.youtube.com/channel/UC4PVZayQJqVTBPuBlxFliUw" target="_blank" rel="noopener"><span class="social__icon social__icon--yt" aria-hidden="true"></span><span class="social__label">YouTube</span></a>
+                <a class="btn btn--ghost social__btn" href="https://www.instagram.com/akibaauto/" target="_blank" rel="noopener"><span class="social__icon social__icon--ig" aria-hidden="true"></span><span class="social__label">Instagram</span></a>
+                <a class="btn btn--ghost social__btn" href="https://vk.com/akibaauto" target="_blank" rel="noopener"><span class="social__icon social__icon--vk" aria-hidden="true"></span><span class="social__label">VK</span></a>
+            </div>
+        </div>
+        <div class="social__media">
+            <img src="<?= e(asset('images/3D Render - iphone.png')) ?>" alt="iPhone с приложением Akiba Auto" class="social__iphone">
+            <img src="<?= e(asset('images/3D Render - iphone1.png')) ?>" alt="iPhone с приложением Akiba Auto" class="social__iphone social__iphone--secondary">
+        </div>
+    </div>
+</section>
+
+<section class="reviews" id="reviews">
+    <div class="container">
+        <div class="reviews__header">
+            <p class="eyebrow">Отзывы</p>
+            <h2 class="reviews__title">Что говорят наши клиенты</h2>
+            <p class="reviews__subtitle">Реальные отзывы клиентов компании <span class="reviews__mobile-line">AkibaAuto с сайта VL.ru</span></p>
+        </div>
+
+        <?php if ($reviewsList !== []): ?>
+            <div class="reviews__slider">
+                <div class="reviews__track">
+                    <?php foreach ($reviewsList as $review): ?>
+                        <article class="review-card">
+                            <div class="review-card__header">
+                                <div class="review-card__author-info">
+                                    <div class="review-card__avatar"><span><?= e(first_letter((string) ($review['author'] ?? 'Клиент'))) ?></span></div>
+                                    <div class="review-card__author-details">
+                                        <h3 class="review-card__author-name"><?= e((string) ($review['author'] ?? 'Клиент')) ?></h3>
+                                        <?php if (!empty($review['date'])): ?>
+                                            <p class="review-card__date"><?= e((string) $review['date']) ?></p>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                                <?php if (!empty($review['rating'])): ?>
+                                    <div class="review-card__rating">
+                                        <span class="review-card__rating-value"><?= e((string) $review['rating']) ?></span>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="review-card__star"><path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z"/></svg>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                            <div class="review-card__body"><p class="review-card__text"><?= e((string) ($review['text'] ?? '')) ?></p></div>
+                        </article>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <div class="reviews__footer">
+                <a href="https://www.vl.ru/akibaauto#comments" target="_blank" rel="noopener" class="btn btn--calc reviews__link">Читать все отзывы на VL.ru</a>
+            </div>
+        <?php else: ?>
+            <div class="reviews__empty"><p>Отзывы временно недоступны</p></div>
+        <?php endif; ?>
+    </div>
+</section>
+
+<section class="contacts-map">
+    <div class="container">
+        <div class="contacts-map__wrapper">
+            <div class="contacts-map__map">
+                <iframe
+                    src="https://yandex.ru/map-widget/v1/?ll=131.918309%2C43.124663&z=16&pt=131.918309%2C43.124663%2Cvkrdl~Akiba%20Auto"
+                    width="100%"
+                    height="100%"
+                    frameborder="0"
+                    allowfullscreen
+                    loading="lazy">
+                </iframe>
+            </div>
+            <div class="contacts-map__info">
+                <h2 class="contacts-map__title">Офис во Владивостоке</h2>
+                <div class="contacts-map__details">
+                    <div class="contacts-map__item"><div class="contacts-map__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="contacts-map__content"><span class="contacts-map__label">Телефон</span><a href="tel:88006009239" class="contacts-map__value">8-800-600-9239</a></div></div>
+                    <div class="contacts-map__item"><div class="contacts-map__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/></svg></div><div class="contacts-map__content"><span class="contacts-map__label">Адрес</span><span class="contacts-map__value">г. Владивосток, Красного знамени 96</span></div></div>
+                    <div class="contacts-map__item"><div class="contacts-map__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="contacts-map__content"><span class="contacts-map__label">Режим работы</span><span class="contacts-map__value">10:00 - 19:00, пн - сб</span></div></div>
+                    <div class="contacts-map__item"><div class="contacts-map__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="contacts-map__content"><span class="contacts-map__label">E-mail</span><a href="mailto:akibaauto@gmail.com" class="contacts-map__value">akibaauto@gmail.com</a></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
