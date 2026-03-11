@@ -9,9 +9,21 @@ $popular = array_slice($popular_cars ?? [], 0, 4);
         <div class="car-hero__content">
             <div class="car-hero__left">
                 <nav class="breadcrumb" role="navigation" aria-label="Навигация по сайту">
-                    <a href="<?= e(route_url('home')) ?>" class="breadcrumb__link">Главная</a>
+                    <a href="<?= e(route_url('home')) ?>" class="breadcrumb__link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                            <polyline points="9,22 9,12 15,12 15,22"/>
+                        </svg>
+                        Главная
+                    </a>
                     <span class="breadcrumb__separator" aria-hidden="true">/</span>
-                    <a href="<?= e(route_url('catalog_list')) ?>" class="breadcrumb__link">Каталог</a>
+                    <a href="<?= e(route_url('catalog_list')) ?>" class="breadcrumb__link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <rect x="9" y="9" width="6" height="6"/>
+                        </svg>
+                        Каталог
+                    </a>
                     <span class="breadcrumb__separator" aria-hidden="true">/</span>
                     <span class="breadcrumb__current"><?= e((string) $car['manufacturer']) ?> <?= e((string) $car['model']) ?></span>
                 </nav>
@@ -21,8 +33,19 @@ $popular = array_slice($popular_cars ?? [], 0, 4);
                     <h1 class="car-hero__title" id="car-hero-title"><?= e((string) $car['model']) ?></h1>
 
                     <div class="car-hero__meta">
-                        <div class="car-hero__meta-item"><span><?= e((string) $car['year']) ?> год</span></div>
-                        <div class="car-hero__meta-item"><span><?= e(origin_label((string) $car['origin'])) ?></span></div>
+                        <div class="car-hero__meta-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span><?= e((string) $car['year']) ?> год</span>
+                        </div>
+                        <div class="car-hero__meta-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span><?= e(origin_label((string) $car['origin'])) ?></span>
+                        </div>
                     </div>
                 </div>
 
@@ -34,19 +57,78 @@ $popular = array_slice($popular_cars ?? [], 0, 4);
                     <div class="car-hero__actions">
                         <a href="#" class="car-hero__cta-btn" data-open-modal="request">
                             <span class="car-hero__cta-text">Оставить заявку</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
                         </a>
-                        <div class="car-hero__guarantee"><span>Бесплатный расчёт</span></div>
+                        <div class="car-hero__guarantee">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>Бесплатный расчёт</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="car-hero__specs">
                     <h3 class="car-hero__specs-title">Характеристики</h3>
                     <div class="car-hero__specs-grid">
-                        <div class="car-hero__spec-card"><div class="car-hero__spec-content"><div class="car-hero__spec-value"><?= e(format_intcomma((int) $car['mileage_km'])) ?> км</div><div class="car-hero__spec-label">Пробег</div></div></div>
-                        <div class="car-hero__spec-card"><div class="car-hero__spec-content"><div class="car-hero__spec-value"><?= e(value_or_dash((string) ($car['engine_volume'] ?? ''))) ?></div><div class="car-hero__spec-label">Двигатель</div></div></div>
-                        <div class="car-hero__spec-card"><div class="car-hero__spec-content"><div class="car-hero__spec-value"><?= e(value_or_dash((string) ($car['fuel'] ?? ''))) ?></div><div class="car-hero__spec-label">Топливо</div></div></div>
-                        <div class="car-hero__spec-card"><div class="car-hero__spec-content"><div class="car-hero__spec-value"><?= e(value_or_dash((string) ($car['body_type'] ?? ''))) ?></div><div class="car-hero__spec-label">Кузов</div></div></div>
-                        <div class="car-hero__spec-card"><div class="car-hero__spec-content"><div class="car-hero__spec-value"><?= e(value_or_dash((string) ($car['drive'] ?? ''))) ?></div><div class="car-hero__spec-label">Привод</div></div></div>
+                        <div class="car-hero__spec-card">
+                            <div class="car-hero__spec-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="car-hero__spec-content">
+                                <div class="car-hero__spec-value"><?= e(format_intcomma((int) $car['mileage_km'])) ?> км</div>
+                                <div class="car-hero__spec-label">Пробег</div>
+                            </div>
+                        </div>
+                        <div class="car-hero__spec-card">
+                            <div class="car-hero__spec-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="car-hero__spec-content">
+                                <div class="car-hero__spec-value"><?= e(value_or_dash((string) ($car['engine_volume'] ?? ''))) ?></div>
+                                <div class="car-hero__spec-label">Двигатель</div>
+                            </div>
+                        </div>
+                        <div class="car-hero__spec-card">
+                            <div class="car-hero__spec-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8 5a2 2 0 012-2h4a2 2 0 012 2v0a2 2 0 01-2 2H10a2 2 0 01-2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="car-hero__spec-content">
+                                <div class="car-hero__spec-value"><?= e(value_or_dash((string) ($car['fuel'] ?? ''))) ?></div>
+                                <div class="car-hero__spec-label">Топливо</div>
+                            </div>
+                        </div>
+                        <div class="car-hero__spec-card">
+                            <div class="car-hero__spec-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="car-hero__spec-content">
+                                <div class="car-hero__spec-value"><?= e(value_or_dash((string) ($car['body_type'] ?? ''))) ?></div>
+                                <div class="car-hero__spec-label">Кузов</div>
+                            </div>
+                        </div>
+                        <div class="car-hero__spec-card">
+                            <div class="car-hero__spec-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="car-hero__spec-content">
+                                <div class="car-hero__spec-value"><?= e(value_or_dash((string) ($car['drive'] ?? ''))) ?></div>
+                                <div class="car-hero__spec-label">Привод</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -69,7 +151,13 @@ $popular = array_slice($popular_cars ?? [], 0, 4);
                                             <div class="car-gallery__image-container">
                                                 <img src="<?= e((string) $imgUrl) ?>" alt="<?= e($imgAlt) ?>" class="car-gallery__image">
                                                 <div class="car-gallery__overlay"></div>
-                                                <button class="car-gallery__zoom-btn" type="button" aria-label="Увеличить фото"></button>
+                                                <button class="car-gallery__zoom-btn" type="button" aria-label="Увеличить фото">
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                        <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                                                        <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                                        <circle cx="11" cy="11" r="3" stroke="currentColor" stroke-width="2"/>
+                                                    </svg>
+                                                </button>
                                             </div>
                                         </div>
                                     <?php endforeach; ?>
@@ -78,7 +166,13 @@ $popular = array_slice($popular_cars ?? [], 0, 4);
                                         <div class="car-gallery__image-container">
                                             <img src="<?= e(asset('images/placeholder-car.jpg')) ?>" alt="<?= e((string) ($car['name'] ?? 'Автомобиль')) ?>" class="car-gallery__image">
                                             <div class="car-gallery__overlay"></div>
-                                            <button class="car-gallery__zoom-btn" type="button" aria-label="Увеличить фото"></button>
+                                            <button class="car-gallery__zoom-btn" type="button" aria-label="Увеличить фото">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                    <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                                                    <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                                    <circle cx="11" cy="11" r="3" stroke="currentColor" stroke-width="2"/>
+                                                </svg>
+                                            </button>
                                         </div>
                                     </div>
                                 <?php endif; ?>
@@ -86,13 +180,21 @@ $popular = array_slice($popular_cars ?? [], 0, 4);
 
                             <?php if (count($carImages) > 1): ?>
                                 <div class="car-gallery__navigation">
-                                    <button class="car-gallery__nav-btn car-gallery__nav-btn--prev" type="button" aria-label="Предыдущее фото"></button>
+                                    <button class="car-gallery__nav-btn car-gallery__nav-btn--prev" type="button" aria-label="Предыдущее фото">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
                                     <div class="car-gallery__indicators">
                                         <?php foreach ($carImages as $index => $image): ?>
                                             <button class="car-gallery__indicator <?= $index === 0 ? 'car-gallery__indicator--active' : '' ?>" type="button" data-slide="<?= e((string) $index) ?>" aria-label="Фото <?= e((string) ($index + 1)) ?>"><span class="car-gallery__indicator-dot"></span></button>
                                         <?php endforeach; ?>
                                     </div>
-                                    <button class="car-gallery__nav-btn car-gallery__nav-btn--next" type="button" aria-label="Следующее фото"></button>
+                                    <button class="car-gallery__nav-btn car-gallery__nav-btn--next" type="button" aria-label="Следующее фото">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
                                 </div>
                                 <div class="car-gallery__counter">
                                     <span class="car-gallery__counter-current">1</span>
@@ -105,7 +207,14 @@ $popular = array_slice($popular_cars ?? [], 0, 4);
                         <?php if (count($carImages) > 1): ?>
                             <div class="car-gallery__thumbnails">
                                 <div class="car-gallery__thumbnails-header">
-                                    <div class="car-gallery__thumbnails-info"><span class="car-gallery__thumbnails-title">Галерея автомобиля</span></div>
+                                    <div class="car-gallery__thumbnails-info">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                            <circle cx="9" cy="9" r="2" stroke="currentColor" stroke-width="2"/>
+                                            <path d="m21 15-3.086-3.086a2 2 0 00-2.828 0L6 21" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
+                                        <span class="car-gallery__thumbnails-title">Галерея автомобиля</span>
+                                    </div>
                                     <span class="car-gallery__thumbnails-count"><?= e((string) count($carImages)) ?> фото</span>
                                 </div>
                                 <div class="car-gallery__thumbnails-wrapper">
@@ -119,7 +228,16 @@ $popular = array_slice($popular_cars ?? [], 0, 4);
                                             }
                                             ?>
                                             <button class="car-gallery__thumbnail <?= $index === 0 ? 'car-gallery__thumbnail--active' : '' ?>" type="button" data-slide="<?= e((string) $index) ?>" aria-label="Показать фото <?= e((string) ($index + 1)) ?>">
-                                                <div class="car-gallery__thumbnail-image"><img src="<?= e((string) $imgUrl) ?>" alt="<?= e($imgAlt) ?>" loading="lazy"></div>
+                                                <div class="car-gallery__thumbnail-image">
+                                                    <img src="<?= e((string) $imgUrl) ?>" alt="<?= e($imgAlt) ?>" loading="lazy">
+                                                    <?php if (!empty($image['is_main'])): ?>
+                                                        <div class="car-gallery__thumbnail-badge">
+                                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+                                                                <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            </svg>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                </div>
                                             </button>
                                         <?php endforeach; ?>
                                     </div>
@@ -136,9 +254,21 @@ $popular = array_slice($popular_cars ?? [], 0, 4);
 <div class="photo-modal">
     <div class="photo-modal__overlay"></div>
     <div class="photo-modal__content">
-        <button class="photo-modal__nav photo-modal__nav--prev" type="button" aria-label="Предыдущее фото"></button>
-        <button class="photo-modal__nav photo-modal__nav--next" type="button" aria-label="Следующее фото"></button>
-        <button class="photo-modal__close" type="button" aria-label="Закрыть"></button>
+        <button class="photo-modal__nav photo-modal__nav--prev" type="button" aria-label="Предыдущее фото">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        <button class="photo-modal__nav photo-modal__nav--next" type="button" aria-label="Следующее фото">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        <button class="photo-modal__close" type="button" aria-label="Закрыть">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
         <img src="" alt="" class="photo-modal__image">
         <div class="photo-modal__counter">
             <span class="photo-modal__counter-current">1</span>
